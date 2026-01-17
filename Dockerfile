@@ -5,8 +5,7 @@ FROM --platform=${TARGETPLATFORM} golang:${GO_VERSION}-alpine AS base
 WORKDIR /go/src/cert-manager-webhook-gandi
 COPY go.* .
 
-RUN --mount=type=cache,target=/go/pkg/mod \
-    apk add --no-cache git ca-certificates && \
+RUN apk add --no-cache git ca-certificates && \
     go mod download
 
 FROM base AS build
@@ -15,8 +14,7 @@ ARG TARGETARCH
 
 COPY . .
 
-RUN --mount=type=cache,target=/go/pkg/mod \
-    GOOS=${TARGETOS} GOARCH=${TARGETARCH} CGO_ENABLED=0 go build -a -o /go/bin/webhook -ldflags '-w -extldflags "-static"' .
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} CGO_ENABLED=0 go build -a -o /go/bin/webhook -ldflags '-w -extldflags "-static"' .
 
 FROM scratch AS image
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt

@@ -4,8 +4,8 @@ certManager:
   namespace: cert-manager
   serviceAccountName: cert-manager
 image:
-  repository: bwolf/cert-manager-webhook-gandi
-  tag: 0.2.0
+  repository: agaddy/cert-manager-webhook-gandi
+  tag: 0.3.0
   pullPolicy: IfNotPresent
 nameOverride: ''
 fullnameOverride: ''

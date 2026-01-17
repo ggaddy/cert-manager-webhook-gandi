@@ -1,6 +1,7 @@
 # ACME webhook for Gandi (cert-manager-webhook-gandi)
 
 `Updated and working 2026-01-17`
+
 I made updates to this to be compliant with the new API token that [Gandi] uses. Tested and working on a k3s cluster in 2026.
 
 `cert-manager-webhook-gandi` is an ACME webhook for [cert-manager]. It provides an ACME (read: Let's Encrypt) webhook for [cert-manager], which allows to use a `DNS-01` challenge with [Gandi]. This allows to provide Let's Encrypt certificates to [Kubernetes] for service protocols other than HTTP and furthermore to request wildcard certificates. Internally it uses the [Gandi LiveDNS API] to communicate with Gandi.

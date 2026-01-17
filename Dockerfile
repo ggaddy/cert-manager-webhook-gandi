@@ -13,7 +13,9 @@ FROM base AS build
 ARG TARGETOS
 ARG TARGETARCH
 
-RUN --mount=readonly,target=. --mount=type=cache,target=/go/pkg/mod \
+COPY . .
+
+RUN --mount=type=cache,target=/go/pkg/mod \
     GOOS=${TARGETOS} GOARCH=${TARGETARCH} CGO_ENABLED=0 go build -a -o /go/bin/webhook -ldflags '-w -extldflags "-static"' .
 
 FROM scratch AS image

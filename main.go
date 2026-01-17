@@ -107,9 +107,9 @@ func (c *gandiDNSProviderSolver) Present(ch *v1alpha1.ChallengeRequest) error {
 	}
 
 	clientcfg := &config.Config{
-		APIKey: *apiKey,
-		Debug:  false,
-		DryRun: false,
+		PersonalAccessToken: *apiKey,
+		Debug:               false,
+		DryRun:              false,
 	}
 	gandiClient := gandi.NewLiveDNSClient(*clientcfg)
 
@@ -163,9 +163,9 @@ func (c *gandiDNSProviderSolver) CleanUp(ch *v1alpha1.ChallengeRequest) error {
 	}
 
 	clientcfg := &config.Config{
-		APIKey: *apiKey,
-		Debug:  true,
-		DryRun: false,
+		PersonalAccessToken: *apiKey,
+		Debug:               true,
+		DryRun:              false,
 	}
 	gandiClient := gandi.NewLiveDNSClient(*clientcfg)
 

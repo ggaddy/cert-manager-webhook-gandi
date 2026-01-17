@@ -8,7 +8,7 @@ require (
 	k8s.io/apimachinery v0.23.4
 	k8s.io/client-go v0.23.4
 	k8s.io/klog/v2 v2.30.0
-	github.com/go-gandi/go-gandi v0.4.0
+	github.com/go-gandi/go-gandi v0.7.0
 )
 
 require (
